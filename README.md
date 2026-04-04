@@ -1,7 +1,7 @@
 # Energy Finance Workbook: Quantitative Analysis & Key Insights
 
 **Author:** Laurent Nguyen | **Date:** April 2026 | **Universe:** 10 Energy Securities + WTI/Brent Benchmarks
-**Period:** January 2019 -- March 2026 (1,808 trading days) | **Portfolio Value:** $10,000,000
+**Period:** January 2019 -- March 2026 (1,808 trading days) | **Portfolio Value:** $10,000,000 (Simulation)
 
 ---
 
