@@ -64,7 +64,7 @@ This workbook delivers a comprehensive quantitative analysis of 10 energy-sector
 
 **Multi-Factor vs Oil-Only R-squared Improvement:**
 - Average R-squared improvement from adding market, SMB, HML, gas, and freight factors: **~+25 percentage points**
-- Largest improvement: FRO (+38.7pp) -- freight factor captures tanker-specific variance
+- Largest improvement: FRO (+38.7 percentage points) -- freight factor captures tanker-specific variance
 
 ### 3.2 Oil Price Transmission Channels
 
@@ -351,7 +351,7 @@ All degradation ratios < 1.05, indicating **no overfitting** in the regression m
 
 4. **Risk Flag:** Heavy tails and skewness across the universe mean Gaussian VaR alone is insufficient; Cornish-Fisher and CVaR/Expected Shortfall should be standard in risk reporting.
 
-5. **Pair Trade:** XOM/CVX remains **NEUTRAL** (Z = 0.30, half-life ≈ 364 days, not cointegrated). Wait for materially wider dislocations before entry.
+5. **Pair Trade:** XOM/CVX remains **NEUTRAL** (Z = 0.30, half-life ≈ 364 days). The pair is not cointegrated, so spread mean-reversion is less statistically reliable; wait for materially wider dislocations before entry.
 
 6. **Regime/Geopolitical Takeaway:** Notebook conflict analysis confirms correlation convergence in crises; diversification assumptions should be stress-tested with higher cross-asset correlation and regime-conditioned vol.
 
