@@ -9,7 +9,7 @@
 
 This workbook delivers a comprehensive quantitative analysis of 10 energy-sector securities spanning integrated oil majors, E&P operators, LNG players, tanker companies, and a midstream pipeline operator -- benchmarked against WTI, Brent, and BIL (T-Bills). The analysis integrates multi-factor regression, EWMA/GJR-GARCH volatility modeling, mean-variance portfolio optimization, Black-Scholes options pricing, scenario analysis under geopolitical stress, tail risk modeling (EVT), pair trading strategies, and DCF fundamental valuation. All 20 sheets are formula-linked and fully interdependent.
 
-**Key Finding:** The Tangency (Maximum Sharpe) portfolio delivers a **Sharpe ratio of 0.98** with 20.8% annualized return at 18.0% volatility, achieved through concentrated allocation to STNG (30%), CVX (30%), and BIL (30%). Under Monte Carlo simulation (10,000 paths), this portfolio's 95% 1-day VaR is $183,377 on a $10M portfolio.
+**Key Finding:** The Tangency (Maximum Sharpe) portfolio delivers a **Sharpe ratio of 1.11** with 24.7% annualized return at 19.3% volatility, concentrated in STNG (30%), BIL (30%), CVX (23.9%), LNG (9.9%), and VG (6.2%). Under Monte Carlo simulation (10,000 paths), this portfolio's 95% 1-day VaR is **$196,075** on a $10M portfolio.
 
 ---
 
@@ -31,10 +31,10 @@ This workbook delivers a comprehensive quantitative analysis of 10 energy-sector
 | VG | LNG (Spot) | -41.1% | **92.2%** | -0.48 | -75.2% |
 
 **Key Observations:**
-- **FRO** leads on risk-adjusted returns (Sharpe 0.60) driven by the tanker rate supercycle
-- **OXY** suffered an 85.9% max drawdown during COVID-19, the deepest in the universe -- reflecting extreme leverage sensitivity
-- **VG** (New Fortress Energy, IPO Jan 2025) exhibits near-1x annualized volatility with negative returns, indicating elevated speculative risk
-- Excess kurtosis ranges from 4.5 (FRO) to **94.0 (OXY)** -- confirming severe fat tails requiring EVT-based risk modeling over Gaussian assumptions
+- **FRO** leads on annualized return (33.2%) with strong risk-adjusted performance (Sharpe 0.56), driven by the tanker cycle
+- **OXY** suffered the deepest max drawdown (-85.9%) and the most extreme left tail (skew -4.01, kurtosis 94.3)
+- **VG** remains the highest-volatility name (92.4% annualized) with deeply negative return (-41.1%), signaling elevated speculative risk
+- Cross-sectional kurtosis remains very high for multiple names, supporting EVT/CVaR-style tail risk treatment over purely Gaussian assumptions
 
 ### 2.2 Distribution Properties
 
@@ -63,8 +63,8 @@ This workbook delivers a comprehensive quantitative analysis of 10 energy-sector
 | LNG | -9.7% | 0.47 | 0.25 | 29.5% | Low market beta (contracted revenues), moderate oil beta |
 
 **Multi-Factor vs Oil-Only R-squared Improvement:**
-- Average R-squared improvement from adding market, SMB, HML, gas, and freight factors: **+25 percentage points**
-- Largest improvement: FRO (+38.3pp) -- freight factor captures tanker-specific variance
+- Average R-squared improvement from adding market, SMB, HML, gas, and freight factors: **~+25 percentage points**
+- Largest improvement: FRO (+38.7 percentage points) -- freight factor captures tanker-specific variance
 
 ### 3.2 Oil Price Transmission Channels
 
@@ -91,11 +91,11 @@ This workbook delivers a comprehensive quantitative analysis of 10 energy-sector
 | Risk Parity | 1.9% | 22.8% | -0.06 | Balanced across all 10 |
 | Equal Weight | 3.4% | 24.7% | 0.01 | 10% each |
 
-**Critical Insight:** The Tangency portfolio's 0.98 Sharpe significantly outperforms all alternatives. Its concentration in STNG (tanker cycle alpha) and BIL (risk dampener) exploits low cross-correlation between shipping and risk-free returns. The MinVar portfolio sacrifices return entirely for volatility minimization, heavily weighting BIL.
+**Critical Insight:** The Tangency portfolio's **1.11 Sharpe** significantly outperforms all alternatives. Its concentration in STNG/CVX/BIL (plus LNG/VG) captures higher expected return while maintaining volatility below Equal Weight and Risk Parity. The MinVar portfolio still minimizes volatility but sacrifices most return.
 
 ### 4.2 Efficient Frontier
 
-The efficient frontier spans from 14.4% volatility (MinVar) to 36.0% volatility at the extreme, with target returns from 0.1% to 30.3%. The frontier's steepest slope occurs between 14.4-18.0% volatility, confirming that the Tangency portfolio captures the optimal risk-return tradeoff.
+The efficient frontier spans from ~14.5% volatility (MinVar) to ~34.3% volatility, with target returns from ~0.7% to ~36.6%. The frontier's steepest slope occurs around the Tangency region, confirming the strongest risk-return tradeoff near the Max-Sharpe portfolio.
 
 ---
 
@@ -120,7 +120,7 @@ The efficient frontier spans from 14.4% volatility (MinVar) to 36.0% volatility 
 | Tangency | $179,194 | $256,484 | $566,588 |
 | Equal Weight | $249,651 | $355,570 | $789,394 |
 
-**Key Finding:** Diversification reduces portfolio VaR by ~85% vs the worst individual position (VG). The Tangency portfolio's 95% VaR of $179K represents only 1.8% of portfolio value per day.
+**Key Finding:** Diversification reduces portfolio VaR by ~80% vs the worst individual position (VG). The Tangency portfolio's 95% 1-day Gaussian VaR is **$192K** (1.92% of portfolio value), versus **$974K** for VG.
 
 ### 5.2 Monte Carlo Simulation (10,000 Paths)
 
@@ -161,7 +161,7 @@ The efficient frontier spans from 14.4% volatility (MinVar) to 36.0% volatility 
 | STNG | 7.19% | 91 | **4.20** | Thinnest tail among high-vol names |
 | XOM | 3.84% | 91 | 3.42 | Moderate tail, manageable extremes |
 
-**Key Finding:** Hill tail indices below 3.0 (OXY, CVX, COP, VG, ET) indicate potentially infinite third moments, meaning Gaussian VaR systematically underestimates true risk for these securities. The Cornish-Fisher adjustment partially corrects this.
+**Key Finding:** Hill tail indices below 3.0 for several names (including OXY and VG) confirm structurally heavy tails. Together with notebook VaR diagnostics, this supports using Cornish-Fisher and especially CVaR/Expected Shortfall alongside Gaussian VaR for capital decisions.
 
 ---
 
@@ -240,10 +240,10 @@ The spread is within 1-sigma bounds, indicating no actionable signal. The long h
 | CVX | 7.71% | $400.4B | $197.0 | $196.8 | **+0.1%** (Fair Value) |
 | XOM | 7.36% | $379.2B | $85.77 | $156.12 | **-45.1%** |
 
-**Key Finding:** DCF analysis reveals a significant **valuation divergence**:
-- **OXY** appears 50% undervalued on DCF -- driven by low base-case oil assumption ($75/bbl declining to $68) despite high WACC reflecting leverage. Sensitivity analysis shows OXY's implied price ranges from $55 (WACC 12%, g=1%) to $201 (WACC 6%, g=3%).
-- **XOM** appears 45% overvalued on DCF -- its premium likely reflects market premium for ESG transition positioning, dividend safety, and integrated business model optionality not captured in a pure FCF model.
-- **CVX** trades at near-perfect fair value, validating the DCF assumptions.
+**Key Finding:** DCF analysis still shows meaningful valuation divergence:
+- **OXY** screens as undervalued (~+39.6% upside on base-case DCF) but with materially higher risk sensitivity than peers.
+- **XOM** screens as overvalued (~-46.0% downside on base-case DCF), indicating a sizable market premium versus model-implied cash flows.
+- **CVX** remains close to fair value (~+0.1%).
 
 ---
 
@@ -343,17 +343,17 @@ All degradation ratios < 1.05, indicating **no overfitting** in the regression m
 
 ## 14. Investment Conclusions
 
-1. **Best Risk-Adjusted Play:** The Tangency portfolio (Sharpe 0.98) offers institutional-grade risk-adjusted returns. Its concentration in STNG/CVX/BIL exploits uncorrelated alpha sources.
+1. **Best Risk-Adjusted Play:** The Tangency portfolio (Sharpe **1.11**) is the strongest portfolio outcome in the workbook, with a concentrated STNG/CVX/BIL core and controlled portfolio volatility.
 
-2. **Highest Conviction Buy:** **OXY** at $57.88 with DCF-implied $86.76 (+50% upside) and scenario-weighted expected return of +12.1%. The high WACC (8.7%) already prices leverage risk. Catalyst: oil price normalization above $75/bbl.
+2. **Most Consistent Equity Winners (historical + scenario):** **FRO** and **LNG** stand out with high historical annualized returns and strong scenario-weighted upside, while shipping names remain key beneficiaries in conflict-driven dislocations.
 
-3. **Avoid:** **VG (New Fortress Energy)** -- negative alpha (-90.1% annualized), highest volatility (92%), 539bp credit spread, Hill tail index of 2.55 indicating infinite-variance territory.
+3. **Primary Avoid:** **VG (New Fortress Energy)** remains the highest-volatility and weakest risk-adjusted name; despite occasional stress-upside scenarios, baseline return/risk quality is poor.
 
-4. **Risk Flag:** Gaussian VaR systematically underestimates tail risk for OXY, CVX, and ET (kurtosis > 25). The Cornish-Fisher and EVT adjustments should be used for regulatory capital calculations.
+4. **Risk Flag:** Heavy tails and skewness across the universe mean Gaussian VaR alone is insufficient; Cornish-Fisher and CVaR/Expected Shortfall should be standard in risk reporting.
 
-5. **Pair Trade:** XOM/CVX spread at Z = -0.39 is NEUTRAL. Wait for |Z| > 2 for entry. Half-life of 345 days requires patient capital.
+5. **Pair Trade:** XOM/CVX remains **NEUTRAL** (Z = 0.30, half-life ≈ 364 days). The pair is not cointegrated, so spread mean-reversion is less statistically reliable; wait for materially wider dislocations before entry.
 
-6. **Credit Opportunity:** OXY bonds (6.125% 2028, BBB-) at 132bp spread offer carry with equity upside participation. Duration of 1.86 limits rate sensitivity.
+6. **Regime/Geopolitical Takeaway:** Notebook conflict analysis confirms correlation convergence in crises; diversification assumptions should be stress-tested with higher cross-asset correlation and regime-conditioned vol.
 
 ---
 
